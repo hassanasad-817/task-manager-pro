@@ -6,11 +6,5 @@ services:
     plan: free
     dockerfilePath: ./backend/Dockerfile
     envVars:
-      - key: Jwt__Key
-        sync: false
-      - key: Jwt__Issuer
-        value: TaskManagerApi
-      - key: Jwt__Audience
-        value: TaskManagerClient
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
