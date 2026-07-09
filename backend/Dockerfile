@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY . .
+COPY backend/ .
 RUN dotnet restore "TaskManagerApi.csproj"
 RUN dotnet publish "TaskManagerApi.csproj" -c Release -o /app/publish
 
