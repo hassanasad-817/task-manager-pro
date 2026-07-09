@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: task-manager-api
+    runtime: docker
+    repo: https://github.com/YOUR_USERNAME/task-manager-pro
+    plan: free
+    dockerfilePath: ./backend/Dockerfile
+    envVars:
+      - key: Jwt__Key
+        sync: false
+      - key: Jwt__Issuer
+        value: TaskManagerApi
+      - key: Jwt__Audience
+        value: TaskManagerClient
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
