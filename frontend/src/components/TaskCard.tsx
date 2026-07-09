@@ -23,23 +23,23 @@ export default function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {
 
   return (
     <div
-      className={`bg-white rounded-lg shadow-sm border border-gray-200 border-l-4 ${
+      className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 border-l-4 ${
         priorityColors[task.priority] || 'border-l-gray-300'
-      } p-4 ${isOverdue ? 'bg-red-50' : ''}`}
+      } p-4 ${isOverdue ? 'bg-red-50 dark:bg-red-900/20' : ''}`}
     >
       <div className="flex items-start justify-between">
         <div className="flex-1 min-w-0">
-          <h4 className="text-sm font-semibold text-gray-900 truncate">{task.title}</h4>
+          <h4 className="text-sm font-semibold text-gray-900 dark:text-white truncate">{task.title}</h4>
           {task.description && (
-            <p className="mt-1 text-xs text-gray-500 line-clamp-2">{task.description}</p>
+            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400 line-clamp-2">{task.description}</p>
           )}
           <div className="mt-2 flex flex-wrap items-center gap-2">
             <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${statusColors[task.status]}`}>
               {task.status === 'InProgress' ? 'In Progress' : task.status}
             </span>
-            <span className="text-xs text-gray-500">{task.projectName}</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">{task.projectName}</span>
             {task.dueDate && (
-              <span className={`text-xs ${isOverdue ? 'font-semibold text-red-600' : 'text-gray-500'}`}>
+              <span className={`text-xs ${isOverdue ? 'font-semibold text-red-600 dark:text-red-400' : 'text-gray-500 dark:text-gray-400'}`}>
                 Due: {new Date(task.dueDate).toLocaleDateString()}
                 {isOverdue && ' (Overdue!)'}
               </span>
@@ -48,8 +48,8 @@ export default function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {
         </div>
         <div className="ml-4 flex items-center gap-1">
           <button
-            onClick={() => onEdit(task)}
-            className="p-1.5 text-gray-400 hover:text-blue-600 rounded hover:bg-blue-50 cursor-pointer"
+            onClick={(e) => { e.stopPropagation(); onEdit(task) }}
+            className="p-1.5 text-gray-400 hover:text-blue-600 rounded hover:bg-blue-50 dark:hover:bg-blue-900/30 cursor-pointer"
             title="Edit"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -57,8 +57,8 @@ export default function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {
             </svg>
           </button>
           <button
-            onClick={() => onDelete(task)}
-            className="p-1.5 text-gray-400 hover:text-red-600 rounded hover:bg-red-50 cursor-pointer"
+            onClick={(e) => { e.stopPropagation(); onDelete(task) }}
+            className="p-1.5 text-gray-400 hover:text-red-600 rounded hover:bg-red-50 dark:hover:bg-red-900/30 cursor-pointer"
             title="Delete"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

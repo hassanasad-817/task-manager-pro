@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { Task, CreateTaskPayload, UpdateTaskPayload, Project, AuthResponse } from '../types'
+import type { Task, CreateTaskPayload, UpdateTaskPayload, Project, AuthResponse, TaskStats, Activity } from '../types'
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
@@ -34,7 +34,7 @@ export const authApi = {
 }
 
 export const tasksApi = {
-  getAll: (params?: { projectId?: number; status?: string; priority?: string }) =>
+  getAll: (params?: { projectId?: number; status?: string; priority?: string; search?: string }) =>
     api.get<Task[]>('/tasks', { params }).then((r) => r.data),
   getById: (id: number) =>
     api.get<Task>(`/tasks/${id}`).then((r) => r.data),
@@ -44,9 +44,18 @@ export const tasksApi = {
     api.put(`/tasks/${id}`, data),
   delete: (id: number) =>
     api.delete(`/tasks/${id}`),
+  getStats: () =>
+    api.get<TaskStats>('/tasks/stats').then((r) => r.data),
+  addComment: (id: number, text: string) =>
+    api.post<Task>(`/tasks/${id}/comments`, { text }).then((r) => r.data),
 }
 
 export const projectsApi = {
   getAll: () =>
     api.get<Project[]>('/projects').then((r) => r.data),
+}
+
+export const activityApi = {
+  getRecent: (limit = 20) =>
+    api.get<Activity[]>('/activity', { params: { limit } }).then((r) => r.data),
 }
