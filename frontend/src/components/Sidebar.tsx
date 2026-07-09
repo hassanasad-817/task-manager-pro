@@ -8,9 +8,9 @@ const links = [
 
 export default function Sidebar() {
   return (
-    <aside className="fixed left-0 top-0 z-40 h-screen w-60 bg-white border-r border-gray-200 dark:bg-gray-900 dark:border-gray-700 hidden md:block">
-      <div className="flex items-center h-16 px-6 border-b border-gray-200 dark:border-gray-700">
-        <h1 className="text-lg font-bold text-gray-900 dark:text-white">Task Manager</h1>
+    <aside className="fixed left-0 top-0 z-40 h-screen w-60 bg-white border-r border-[#DADCE0] dark:bg-[#2D2D2D] dark:border-[#3C4043] hidden md:block">
+      <div className="flex items-center h-16 px-6 border-b border-[#DADCE0] dark:border-[#3C4043]">
+        <h1 className="text-lg font-bold text-[#202124] dark:text-[#E8EAED]">Task Manager</h1>
       </div>
       <nav className="p-4 space-y-1">
         {links.map((link) => (
@@ -20,10 +20,10 @@ export default function Sidebar() {
             end={link.to === '/'}
             className={({ isActive }) =>
               `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                isActive
-                  ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
-                  : 'text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800'
-              }`
+                 isActive
+                   ? 'bg-[#E8F0FE] text-[#1A73E8] dark:bg-[#1A73E8]/20 dark:text-[#8AB4F8]'
+                   : 'text-[#5F6368] hover:bg-[#F1F3F4] dark:text-[#9AA0A6] dark:hover:bg-[#3C4043]/30'
+               }`
             }
           >
             <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

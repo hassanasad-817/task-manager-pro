@@ -37,53 +37,56 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="bg-white rounded-xl shadow-md p-8 w-full max-w-sm mx-4">
-        <h2 className="text-2xl font-bold text-gray-900 text-center">
-          Task Manager Pro
-        </h2>
-        <p className="mt-1 text-sm text-gray-500 text-center">
+    <div className="min-h-screen flex items-center justify-center bg-[#F8F9FA] dark:bg-[#1F1F1F]">
+      <div className="bg-white dark:bg-[#2D2D2D] rounded-xl shadow-sm border border-[#DADCE0] dark:border-[#3C4043] p-8 w-full max-w-sm mx-4">
+        <div className="flex items-center justify-center gap-2 mb-1">
+          <div className="w-6 h-6 rounded-full bg-[#1A73E8]" />
+          <h2 className="text-2xl font-bold text-[#202124] dark:text-[#E8EAED]">
+            Task Manager
+          </h2>
+        </div>
+        <p className="text-sm text-[#5F6368] dark:text-[#9AA0A6] text-center">
           {isRegister ? 'Create an account' : 'Sign in to continue'}
         </p>
         {error && (
-          <div className="mt-4 p-3 text-sm text-red-700 bg-red-100 rounded-lg">
+          <div className="mt-4 p-3 text-sm text-[#D93025] bg-[#FCE8E6] dark:bg-[#D93025]/20 dark:text-[#F28B82] rounded-lg">
             {error}
           </div>
         )}
         <form onSubmit={handleSubmit} className="mt-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Username</label>
+            <label className="block text-sm font-medium text-[#202124] dark:text-[#E8EAED]">Username</label>
             <input
               type="text"
               required
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-lg border border-[#DADCE0] dark:border-[#3C4043] px-3 py-2 text-sm bg-white dark:bg-[#1F1F1F] text-[#202124] dark:text-[#E8EAED] focus:border-[#1A73E8] focus:outline-none focus:ring-1 focus:ring-[#1A73E8]"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Password</label>
+            <label className="block text-sm font-medium text-[#202124] dark:text-[#E8EAED]">Password</label>
             <input
               type="password"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-lg border border-[#DADCE0] dark:border-[#3C4043] px-3 py-2 text-sm bg-white dark:bg-[#1F1F1F] text-[#202124] dark:text-[#E8EAED] focus:border-[#1A73E8] focus:outline-none focus:ring-1 focus:ring-[#1A73E8]"
             />
           </div>
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2 px-4 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:opacity-50 cursor-pointer"
+            className="w-full py-2 px-4 text-sm font-medium text-white bg-[#1A73E8] rounded-lg hover:bg-[#1557B0] disabled:opacity-50 cursor-pointer"
           >
             {loading ? 'Please wait...' : isRegister ? 'Register' : 'Sign In'}
           </button>
         </form>
-        <p className="mt-4 text-center text-sm text-gray-500">
+        <p className="mt-4 text-center text-sm text-[#5F6368] dark:text-[#9AA0A6]">
           {isRegister ? 'Already have an account?' : "Don't have an account?"}{' '}
           <button
             onClick={() => { setIsRegister(!isRegister); setError('') }}
-            className="text-blue-600 hover:text-blue-800 font-medium cursor-pointer"
+            className="text-[#1A73E8] hover:text-[#1557B0] font-medium cursor-pointer"
           >
             {isRegister ? 'Sign In' : 'Register'}
           </button>

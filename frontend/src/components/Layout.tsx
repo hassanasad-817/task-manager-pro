@@ -4,7 +4,7 @@ import Header from './Header'
 
 export default function Layout() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
+    <div className="min-h-screen bg-[#F8F9FA] dark:bg-[#1F1F1F]">
       <Sidebar />
       <div className="md:ml-60">
         <Header />

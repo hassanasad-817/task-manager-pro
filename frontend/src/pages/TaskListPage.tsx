@@ -12,6 +12,7 @@ import TaskForm from '../components/TaskForm'
 import ProjectSelector from '../components/ProjectSelector'
 import ConfirmDialog from '../components/ConfirmDialog'
 import KanbanColumn from '../components/KanbanColumn'
+
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } }
 
 const statusLabels: Record<TaskStatus, string> = {
@@ -21,9 +22,9 @@ const statusLabels: Record<TaskStatus, string> = {
 }
 
 const statusColors: Record<TaskStatus, string> = {
-  Todo: '#6B7280',
-  InProgress: '#3B82F6',
-  Done: '#10B981',
+  Todo: '#9AA0A6',
+  InProgress: '#1A73E8',
+  Done: '#1E8E3E',
 }
 
 export default function TaskListPage() {
@@ -177,26 +178,26 @@ export default function TaskListPage() {
   return (
     <motion.div variants={container} initial="hidden" animate="show" className="space-y-4">
       <div className="flex flex-wrap items-center gap-3">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mr-auto">Tasks</h2>
-        <div className="flex items-center gap-2 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 p-0.5">
+        <h2 className="text-2xl font-bold text-[#202124] dark:text-[#E8EAED] mr-auto">Tasks</h2>
+        <div className="flex items-center gap-2 bg-white dark:bg-[#2D2D2D] rounded-lg border border-[#DADCE0] dark:border-[#3C4043] p-0.5">
           <button
             onClick={() => setView('list')}
-            className={`px-3 py-1.5 text-sm rounded-md cursor-pointer ${view === 'list' ? 'bg-blue-600 text-white' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}
+            className={`px-3 py-1.5 text-sm rounded-md cursor-pointer ${view === 'list' ? 'bg-[#1A73E8] text-white' : 'text-[#5F6368] dark:text-[#9AA0A6] hover:text-[#202124] dark:hover:text-[#E8EAED]'}`}
           >List</button>
           <button
             onClick={() => setView('kanban')}
-            className={`px-3 py-1.5 text-sm rounded-md cursor-pointer ${view === 'kanban' ? 'bg-blue-600 text-white' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}
+            className={`px-3 py-1.5 text-sm rounded-md cursor-pointer ${view === 'kanban' ? 'bg-[#1A73E8] text-white' : 'text-[#5F6368] dark:text-[#9AA0A6] hover:text-[#202124] dark:hover:text-[#E8EAED]'}`}
           >Kanban</button>
         </div>
         <button
           onClick={() => { setEditingTask(null); setFormOpen(true) }}
-          className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 cursor-pointer"
+          className="px-4 py-2 text-sm font-medium text-white bg-[#1A73E8] rounded-lg hover:bg-[#1557B0] cursor-pointer"
         >+ New Task</button>
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
         <div className="relative flex-1 min-w-[200px] max-w-sm">
-          <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9AA0A6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
           <input
@@ -204,26 +205,26 @@ export default function TaskListPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search tasks..."
-            className="w-full pl-9 pr-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="w-full pl-9 pr-3 py-2 text-sm border border-[#DADCE0] dark:border-[#3C4043] rounded-lg bg-white dark:bg-[#1F1F1F] text-[#202124] dark:text-[#E8EAED] focus:border-[#1A73E8] focus:outline-none focus:ring-1 focus:ring-[#1A73E8]"
           />
         </div>
         <ProjectSelector projects={projects} selectedId={selectedProject} onChange={setSelectedProject} />
         <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}
-          className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+          className="border border-[#DADCE0] dark:border-[#3C4043] rounded-lg px-3 py-2 text-sm bg-white dark:bg-[#1F1F1F] text-[#202124] dark:text-[#E8EAED]">
           <option value="">All Statuses</option>
           <option value="Todo">Todo</option>
           <option value="InProgress">In Progress</option>
           <option value="Done">Done</option>
         </select>
         <select value={priorityFilter} onChange={(e) => setPriorityFilter(e.target.value)}
-          className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+          className="border border-[#DADCE0] dark:border-[#3C4043] rounded-lg px-3 py-2 text-sm bg-white dark:bg-[#1F1F1F] text-[#202124] dark:text-[#E8EAED]">
           <option value="">All Priorities</option>
           <option value="Low">Low</option>
           <option value="Medium">Medium</option>
           <option value="High">High</option>
         </select>
         <select value={sort} onChange={(e) => setSort(e.target.value as typeof sort)}
-          className="border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 text-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+          className="border border-[#DADCE0] dark:border-[#3C4043] rounded-lg px-3 py-2 text-sm bg-white dark:bg-[#1F1F1F] text-[#202124] dark:text-[#E8EAED]">
           <option value="newest">Newest</option>
           <option value="oldest">Oldest</option>
           <option value="due">Due Date</option>
@@ -231,14 +232,14 @@ export default function TaskListPage() {
         </select>
         {selectedIds.size > 0 && (
           <button onClick={handleBulkDelete}
-            className="px-3 py-2 text-sm font-medium text-red-700 bg-red-100 dark:bg-red-900/30 dark:text-red-400 rounded-lg hover:bg-red-200 cursor-pointer">
+            className="px-3 py-2 text-sm font-medium text-[#D93025] bg-[#FCE8E6] dark:bg-[#D93025]/20 dark:text-[#F28B82] rounded-lg hover:bg-[#FAD2CF] cursor-pointer">
             Delete {selectedIds.size}
           </button>
         )}
       </div>
 
       {error && (
-        <div className="p-3 text-sm text-red-700 bg-red-100 dark:bg-red-900/30 dark:text-red-400 rounded-lg">
+        <div className="p-3 text-sm text-[#D93025] bg-[#FCE8E6] dark:bg-[#D93025]/20 dark:text-[#F28B82] rounded-lg">
           {error}
           <button onClick={fetchTasks} className="ml-2 underline cursor-pointer">Retry</button>
         </div>
@@ -247,15 +248,15 @@ export default function TaskListPage() {
       {loading ? (
         <div className="space-y-3">
           {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="h-16 bg-gray-200 dark:bg-gray-800 rounded-lg animate-pulse" />
+            <div key={i} className="h-16 bg-[#E8EAED] dark:bg-[#3C4043]/30 rounded-lg animate-pulse" />
           ))}
         </div>
       ) : view === 'list' ? (
         sortedTasks.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500 dark:text-gray-400">No tasks found</p>
+            <p className="text-[#5F6368] dark:text-[#9AA0A6]">No tasks found</p>
             <button onClick={() => { setEditingTask(null); setFormOpen(true) }}
-              className="mt-2 text-sm text-blue-600 hover:text-blue-800 cursor-pointer">Create your first task</button>
+              className="mt-2 text-sm text-[#1A73E8] hover:text-[#1557B0] cursor-pointer">Create your first task</button>
           </div>
         ) : (
           <div className="space-y-2">
@@ -265,14 +266,14 @@ export default function TaskListPage() {
                   type="checkbox"
                   checked={selectedIds.has(task.id)}
                   onChange={() => toggleSelect(task.id)}
-                  className="rounded border-gray-300 dark:border-gray-600 text-blue-600 shrink-0"
+                  className="rounded border-[#DADCE0] dark:border-[#5F6368] text-[#1A73E8] shrink-0"
                 />
                 <Link to={`/tasks/${task.id}`} className="flex-1 min-w-0">
                   <TaskCard task={task} onEdit={(t) => { setEditingTask(t); setFormOpen(true) }} onDelete={setDeletingTask} />
                 </Link>
                 <button
                   onClick={(e) => { e.preventDefault(); handleQuickStatus(task) }}
-                  className="shrink-0 px-2 py-1 text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 rounded hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer"
+                  className="shrink-0 px-2 py-1 text-xs font-medium text-[#5F6368] dark:text-[#9AA0A6] bg-[#F1F3F4] dark:bg-[#3C4043]/30 rounded hover:bg-[#E8EAED] dark:hover:bg-[#3C4043]/50 cursor-pointer"
                   title="Quick status change"
                 >
                   {task.status === 'Todo' ? '→ In Progress' : task.status === 'InProgress' ? '→ Done' : '→ Todo'}

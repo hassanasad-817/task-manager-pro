@@ -15,7 +15,10 @@ export default function App() {
     <BrowserRouter>
       <AuthProvider>
         <ThemeProvider>
-          <Toaster position="top-right" toastOptions={{ className: 'dark:bg-gray-800 dark:text-white' }} />
+          <Toaster position="top-right" toastOptions={{
+            className: 'dark:!bg-[#2D2D2D] dark:!text-[#E8EAED] !shadow-sm',
+            style: { border: '1px solid #DADCE0' },
+          }} />
           <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>

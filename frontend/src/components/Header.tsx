@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 function Avatar({ name }: { name: string }) {
   const initials = name.slice(0, 2).toUpperCase()
   return (
-    <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-semibold">
+    <div className="w-8 h-8 rounded-full bg-[#1A73E8] flex items-center justify-center text-white text-xs font-semibold">
       {initials}
     </div>
   )
@@ -17,16 +17,16 @@ export default function Header() {
   const navigate = useNavigate()
 
   return (
-    <header className="sticky top-0 z-30 h-16 bg-white/80 backdrop-blur-sm border-b border-gray-200 dark:bg-gray-900/80 dark:border-gray-700">
+    <header className="sticky top-0 z-30 h-16 bg-white/80 backdrop-blur-sm border-b border-[#DADCE0] dark:bg-[#2D2D2D]/80 dark:border-[#3C4043]">
       <div className="flex items-center justify-between h-full px-4 md:px-6">
         <div className="md:hidden">
-          <h1 className="text-lg font-bold text-gray-900 dark:text-white">Task Manager</h1>
+          <h1 className="text-lg font-bold text-[#202124] dark:text-[#E8EAED]">Task Manager</h1>
         </div>
         <div className="flex-1 md:flex-none" />
         <div className="flex items-center gap-3">
           <button
             onClick={toggle}
-            className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
+            className="p-2 text-[#5F6368] hover:text-[#202124] dark:text-[#9AA0A6] dark:hover:text-[#E8EAED] rounded-lg hover:bg-[#F1F3F4] dark:hover:bg-[#3C4043]/30 cursor-pointer"
             title={dark ? 'Light mode' : 'Dark mode'}
           >
             {dark ? (
@@ -41,19 +41,19 @@ export default function Header() {
           </button>
           <button
             onClick={() => navigate('/tasks')}
-            className="p-2 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer md:hidden"
+            className="p-2 text-[#5F6368] hover:text-[#202124] dark:text-[#9AA0A6] dark:hover:text-[#E8EAED] rounded-lg hover:bg-[#F1F3F4] dark:hover:bg-[#3C4043]/30 cursor-pointer md:hidden"
             title="Tasks"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
             </svg>
           </button>
-          <div className="flex items-center gap-2 pl-3 border-l border-gray-200 dark:border-gray-700">
+          <div className="flex items-center gap-2 pl-3 border-l border-[#DADCE0] dark:border-[#3C4043]">
             <Avatar name={username || 'U'} />
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300 hidden sm:block">{username}</span>
+            <span className="text-sm font-medium text-[#202124] dark:text-[#E8EAED] hidden sm:block">{username}</span>
             <button
               onClick={logout}
-              className="text-sm text-gray-500 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-400 cursor-pointer ml-1"
+              className="text-sm text-[#5F6368] hover:text-[#D93025] dark:text-[#9AA0A6] dark:hover:text-[#F28B82] cursor-pointer ml-1"
             >
               Logout
             </button>

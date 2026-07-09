@@ -61,37 +61,37 @@ export default function TaskForm({ open, task, projects, onSave, onClose }: Task
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-      <div className="bg-white rounded-xl shadow-xl p-6 w-full max-w-lg mx-4 max-h-[90vh] overflow-y-auto">
-        <h3 className="text-lg font-semibold text-gray-900">
+      <div className="bg-white dark:bg-[#2D2D2D] rounded-xl shadow-xl border border-[#DADCE0] dark:border-[#3C4043] p-6 w-full max-w-lg mx-4 max-h-[90vh] overflow-y-auto">
+        <h3 className="text-lg font-semibold text-[#202124] dark:text-[#E8EAED]">
           {task ? 'Edit Task' : 'New Task'}
         </h3>
         <form onSubmit={handleSubmit} className="mt-4 space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Title *</label>
+            <label className="block text-sm font-medium text-[#202124] dark:text-[#E8EAED]">Title *</label>
             <input
               type="text"
               required
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-lg border border-[#DADCE0] dark:border-[#3C4043] px-3 py-2 text-sm bg-white dark:bg-[#1F1F1F] text-[#202124] dark:text-[#E8EAED] focus:border-[#1A73E8] focus:outline-none focus:ring-1 focus:ring-[#1A73E8]"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Description</label>
+            <label className="block text-sm font-medium text-[#202124] dark:text-[#E8EAED]">Description</label>
             <textarea
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
               rows={3}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-lg border border-[#DADCE0] dark:border-[#3C4043] px-3 py-2 text-sm bg-white dark:bg-[#1F1F1F] text-[#202124] dark:text-[#E8EAED] focus:border-[#1A73E8] focus:outline-none focus:ring-1 focus:ring-[#1A73E8]"
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700">Status</label>
+              <label className="block text-sm font-medium text-[#202124] dark:text-[#E8EAED]">Status</label>
               <select
                 value={form.status}
                 onChange={(e) => setForm({ ...form, status: e.target.value as FormData['status'] })}
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="mt-1 block w-full rounded-lg border border-[#DADCE0] dark:border-[#3C4043] px-3 py-2 text-sm bg-white dark:bg-[#1F1F1F] text-[#202124] dark:text-[#E8EAED] focus:border-[#1A73E8] focus:outline-none focus:ring-1 focus:ring-[#1A73E8]"
               >
                 <option value="Todo">Todo</option>
                 <option value="InProgress">In Progress</option>
@@ -99,11 +99,11 @@ export default function TaskForm({ open, task, projects, onSave, onClose }: Task
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Priority</label>
+              <label className="block text-sm font-medium text-[#202124] dark:text-[#E8EAED]">Priority</label>
               <select
                 value={form.priority}
                 onChange={(e) => setForm({ ...form, priority: e.target.value as FormData['priority'] })}
-                className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="mt-1 block w-full rounded-lg border border-[#DADCE0] dark:border-[#3C4043] px-3 py-2 text-sm bg-white dark:bg-[#1F1F1F] text-[#202124] dark:text-[#E8EAED] focus:border-[#1A73E8] focus:outline-none focus:ring-1 focus:ring-[#1A73E8]"
               >
                 <option value="Low">Low</option>
                 <option value="Medium">Medium</option>
@@ -112,11 +112,11 @@ export default function TaskForm({ open, task, projects, onSave, onClose }: Task
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Project</label>
+            <label className="block text-sm font-medium text-[#202124] dark:text-[#E8EAED]">Project</label>
             <select
               value={form.projectId}
               onChange={(e) => setForm({ ...form, projectId: Number(e.target.value) })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-lg border border-[#DADCE0] dark:border-[#3C4043] px-3 py-2 text-sm bg-white dark:bg-[#1F1F1F] text-[#202124] dark:text-[#E8EAED] focus:border-[#1A73E8] focus:outline-none focus:ring-1 focus:ring-[#1A73E8]"
             >
               {projects.map((p) => (
                 <option key={p.id} value={p.id}>{p.name}</option>
@@ -124,25 +124,25 @@ export default function TaskForm({ open, task, projects, onSave, onClose }: Task
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Due Date</label>
+            <label className="block text-sm font-medium text-[#202124] dark:text-[#E8EAED]">Due Date</label>
             <input
               type="date"
               value={form.dueDate}
               onChange={(e) => setForm({ ...form, dueDate: e.target.value })}
-              className="mt-1 block w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="mt-1 block w-full rounded-lg border border-[#DADCE0] dark:border-[#3C4043] px-3 py-2 text-sm bg-white dark:bg-[#1F1F1F] text-[#202124] dark:text-[#E8EAED] focus:border-[#1A73E8] focus:outline-none focus:ring-1 focus:ring-[#1A73E8]"
             />
           </div>
           <div className="flex justify-end gap-3 pt-2">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 cursor-pointer"
+              className="px-4 py-2 text-sm font-medium text-[#5F6368] bg-[#F1F3F4] dark:bg-[#3C4043]/30 dark:text-[#9AA0A6] rounded-lg hover:bg-[#E8EAED] dark:hover:bg-[#3C4043]/50 cursor-pointer"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 cursor-pointer"
+              className="px-4 py-2 text-sm font-medium text-white bg-[#1A73E8] rounded-lg hover:bg-[#1557B0] cursor-pointer"
             >
               {task ? 'Update' : 'Create'}
             </button>

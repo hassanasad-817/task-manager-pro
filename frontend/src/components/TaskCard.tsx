@@ -7,15 +7,15 @@ interface TaskCardProps {
 }
 
 const statusColors: Record<string, string> = {
-  Todo: 'bg-gray-100 text-gray-800',
-  InProgress: 'bg-blue-100 text-blue-800',
-  Done: 'bg-green-100 text-green-800',
+  Todo: 'bg-[#F1F3F4] text-[#5F6368] dark:bg-[#3C4043]/50 dark:text-[#9AA0A6]',
+  InProgress: 'bg-[#E8F0FE] text-[#1A73E8] dark:bg-[#1A73E8]/20 dark:text-[#8AB4F8]',
+  Done: 'bg-[#E6F4EA] text-[#1E8E3E] dark:bg-[#1E8E3E]/20 dark:text-[#81C995]',
 }
 
-const priorityColors: Record<string, string> = {
-  Low: 'border-l-green-500',
-  Medium: 'border-l-yellow-500',
-  High: 'border-l-red-500',
+const priorityBorder: Record<string, string> = {
+  Low: 'border-l-[#1E8E3E]',
+  Medium: 'border-l-[#F9AB00]',
+  High: 'border-l-[#D93025]',
 }
 
 export default function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {
@@ -23,23 +23,23 @@ export default function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {
 
   return (
     <div
-      className={`bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 border-l-4 ${
-        priorityColors[task.priority] || 'border-l-gray-300'
-      } p-4 ${isOverdue ? 'bg-red-50 dark:bg-red-900/20' : ''}`}
+      className={`bg-white dark:bg-[#2D2D2D] rounded-lg shadow-sm border border-[#DADCE0] dark:border-[#3C4043] border-l-4 ${
+        priorityBorder[task.priority] || 'border-l-[#DADCE0]'
+      } p-4 ${isOverdue ? 'bg-[#FCE8E6] dark:bg-[#D93025]/10' : ''}`}
     >
       <div className="flex items-start justify-between">
         <div className="flex-1 min-w-0">
-          <h4 className="text-sm font-semibold text-gray-900 dark:text-white truncate">{task.title}</h4>
+          <h4 className="text-sm font-semibold text-[#202124] dark:text-[#E8EAED] truncate">{task.title}</h4>
           {task.description && (
-            <p className="mt-1 text-xs text-gray-500 dark:text-gray-400 line-clamp-2">{task.description}</p>
+            <p className="mt-1 text-xs text-[#5F6368] dark:text-[#9AA0A6] line-clamp-2">{task.description}</p>
           )}
           <div className="mt-2 flex flex-wrap items-center gap-2">
             <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${statusColors[task.status]}`}>
               {task.status === 'InProgress' ? 'In Progress' : task.status}
             </span>
-            <span className="text-xs text-gray-500 dark:text-gray-400">{task.projectName}</span>
+            <span className="text-xs text-[#5F6368] dark:text-[#9AA0A6]">{task.projectName}</span>
             {task.dueDate && (
-              <span className={`text-xs ${isOverdue ? 'font-semibold text-red-600 dark:text-red-400' : 'text-gray-500 dark:text-gray-400'}`}>
+              <span className={`text-xs ${isOverdue ? 'font-semibold text-[#D93025] dark:text-[#F28B82]' : 'text-[#5F6368] dark:text-[#9AA0A6]'}`}>
                 Due: {new Date(task.dueDate).toLocaleDateString()}
                 {isOverdue && ' (Overdue!)'}
               </span>
@@ -49,7 +49,7 @@ export default function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {
         <div className="ml-4 flex items-center gap-1">
           <button
             onClick={(e) => { e.stopPropagation(); onEdit(task) }}
-            className="p-1.5 text-gray-400 hover:text-blue-600 rounded hover:bg-blue-50 dark:hover:bg-blue-900/30 cursor-pointer"
+            className="p-1.5 text-[#9AA0A6] hover:text-[#1A73E8] rounded hover:bg-[#E8F0FE] dark:hover:bg-[#1A73E8]/20 cursor-pointer"
             title="Edit"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,7 +58,7 @@ export default function TaskCard({ task, onEdit, onDelete }: TaskCardProps) {
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); onDelete(task) }}
-            className="p-1.5 text-gray-400 hover:text-red-600 rounded hover:bg-red-50 dark:hover:bg-red-900/30 cursor-pointer"
+            className="p-1.5 text-[#9AA0A6] hover:text-[#D93025] rounded hover:bg-[#FCE8E6] dark:hover:bg-[#D93025]/20 cursor-pointer"
             title="Delete"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
