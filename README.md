@@ -90,4 +90,5 @@ npm test
 ## Deployment
 
 - **Frontend:** https://frontend-woad-nine-8hfulwoq6n.vercel.app
-- **Backend:** Pending deployment
+- **Backend:** https://task-manager-api-s381.onrender.com
+- **Swagger:** https://task-manager-api-s381.onrender.com/swagger
