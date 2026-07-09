@@ -2,7 +2,7 @@ services:
   - type: web
     name: task-manager-api
     runtime: docker
-    repo: https://github.com/YOUR_USERNAME/task-manager-pro
+    repo: https://github.com/hassanasad-817/task-manager-pro
     plan: free
     dockerfilePath: ./backend/Dockerfile
     envVars:
