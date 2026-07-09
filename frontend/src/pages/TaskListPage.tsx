@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import axios from 'axios'
 import { useAuth } from '../context/AuthContext'
 import { tasksApi, projectsApi } from '../services/api'
 import type { Task, Project, CreateTaskPayload, UpdateTaskPayload } from '../types'
@@ -64,8 +65,16 @@ export default function TaskListPage() {
       setFormOpen(false)
       setEditingTask(null)
       fetchTasks()
-    } catch {
-      setError('Failed to save task')
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err) && err.response?.data?.error) {
+        setError(err.response.data.error)
+      } else if (axios.isAxiosError(err) && err.response?.data?.message) {
+        setError(err.response.data.message)
+      } else if (err instanceof Error) {
+        setError(err.message)
+      } else {
+        setError('Failed to save task')
+      }
     }
   }
 
@@ -75,8 +84,14 @@ export default function TaskListPage() {
       await tasksApi.delete(deletingTask.id)
       setDeletingTask(null)
       fetchTasks()
-    } catch {
-      setError('Failed to delete task')
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err) && err.response?.data?.error) {
+        setError(err.response.data.error)
+      } else if (err instanceof Error) {
+        setError(err.message)
+      } else {
+        setError('Failed to delete task')
+      }
     }
   }
 

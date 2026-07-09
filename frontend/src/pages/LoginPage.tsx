@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 import { useAuth } from '../context/AuthContext'
 
 export default function LoginPage() {
@@ -23,7 +24,9 @@ export default function LoginPage() {
       }
       navigate('/')
     } catch (err: unknown) {
-      if (err instanceof Error) {
+      if (axios.isAxiosError(err) && err.response?.data?.error) {
+        setError(err.response.data.error)
+      } else if (err instanceof Error) {
         setError(err.message)
       } else {
         setError(isRegister ? 'Registration failed' : 'Invalid credentials')
