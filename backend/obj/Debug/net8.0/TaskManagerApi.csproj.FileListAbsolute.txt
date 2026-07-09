@@ -133,3 +133,4 @@ C:\Users\Hssaan\Desktop\Project\task-manager-pro\backend\obj\Debug\net8.0\refint
 C:\Users\Hssaan\Desktop\Project\task-manager-pro\backend\obj\Debug\net8.0\TaskManagerApi.pdb
 C:\Users\Hssaan\Desktop\Project\task-manager-pro\backend\obj\Debug\net8.0\TaskManagerApi.genruntimeconfig.cache
 C:\Users\Hssaan\Desktop\Project\task-manager-pro\backend\obj\Debug\net8.0\ref\TaskManagerApi.dll
+C:\Users\Hssaan\Desktop\Project\task-manager-pro\backend\obj\Debug\net8.0\TaskManagerApi.sourcelink.json
