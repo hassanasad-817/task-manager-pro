@@ -22,7 +22,12 @@ public class TaskItem
     public int ProjectId { get; set; }
     public Project? Project { get; set; }
 
+    [MaxLength(50)]
+    public string UserId { get; set; } = string.Empty;
+
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     public DateTime? DueDate { get; set; }
+
+    public ICollection<Comment> Comments { get; set; } = new List<Comment>();
 }

@@ -19,7 +19,14 @@ public class ProjectsController : ControllerBase
     public async Task<IActionResult> GetAll()
     {
         var projects = await _context.Projects
-            .Select(p => new { p.Id, p.Name })
+            .Select(p => new
+            {
+                p.Id,
+                p.Name,
+                p.Description,
+                p.Color,
+                TaskCount = p.Tasks.Count
+            })
             .ToListAsync();
         return Ok(projects);
     }
